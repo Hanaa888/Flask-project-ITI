@@ -20,10 +20,8 @@ pipeline {
         }
         stage('Build docker image') {
             steps {
-                script {
                     echo "Building Docker image ${IMAGE_TAG}"
                     sh "docker build -t ${IMAGE_TAG} . "
-                }
         }
         }
         stage('Push image to docker hub') {
