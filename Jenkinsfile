@@ -2,7 +2,6 @@ pipeline {
     agent any
     environment {
         IMAGE_NAME = 'hanaa01/flask-app'
-        IMAGE_TAG = '${IMAGE_NAME}:${env.GIT_COMMIT}'
     }
     stages {
         stage('Test') {
@@ -21,7 +20,7 @@ pipeline {
         stage('Build docker image') {
             steps {
                     echo "Building Docker image ${IMAGE_TAG}"
-                    sh "docker build -t ${IMAGE_TAG} . "
+                    sh "docker build -t ${IMAGE_NAME}:${env.GIT_COMMIT} . "
         }
         }
         stage('Push image to docker hub') {
