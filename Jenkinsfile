@@ -20,7 +20,7 @@ pipeline {
         stage('Build docker image') {
             steps {
                     echo "Building Docker image ${IMAGE_TAG}"
-                    sh "docker build -t ${IMAGE_NAME}:${env.GIT_COMMIT} . "
+                    sh "docker build -t ${IMAGE_NAME} . "
         }
         }
         stage('Push image to docker hub') {
