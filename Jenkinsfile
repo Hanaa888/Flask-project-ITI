@@ -21,13 +21,13 @@ pipeline {
             steps {
                 script {
                     echo "Building Docker image ${IMAGE_NAME}"
-                    sh "docker build -t ${IMAGE_NAME} . "
+                    sh "docker build -t ${IMAGE_NAME}:${BUILD_NUMBER} . "
                 }
         }
         }
         stage('Push image to docker hub') {
             steps {
-                sh "docker push ${IMAGE_NAME} "
+                sh "docker push ${IMAGE_NAME}:${BUILD_NUMBER} "
                 echo "IMAGE PUSHED TO DOCKER HUB SUCCESSFULLY"
             }
         }
